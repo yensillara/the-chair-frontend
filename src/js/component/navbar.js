@@ -1,41 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import blackBrand from "../../img/black-brand.png";
+import brand from "../../img/brand.png";
+import { Nav, Modal, Button } from "react-bootstrap";
 
 export const Navbar = () => {
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">
-					<img width="200" height="50" src={blackBrand} />
-				</span>
-			</Link>
-
-			<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn btn-primary">
-				sign out
-			</button>
-
-			<div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div className="modal-dialog">
-					<div className="modal-content">
-						<div className="modal-header">
-							<h5 className="modal-title" id="exampleModalLabel">
-								Modal title
-							</h5>
-							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
-						</div>
-						<div className="modal-body">...</div>
-						<div className="modal-footer">
-							<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
-								Close
-							</button>
-							<button type="button" className="btn btn-primary">
-								Save changes
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
+		<>
+			<Navbar bg="light" variant="light">
+				<Navbar.Brand href="#home">
+					<img src={brand} height="90" className="d-inline-block align-top" alt="The Chair logo" />
+				</Navbar.Brand>
+				<Nav className="mr-auto">
+					<Nav.Link href="#home">About Us</Nav.Link>
+					<Nav.Link href="#features">Contact Us</Nav.Link>
+					<Nav.Link href="#login">
+						<Button variant="primary" onClick={handleShow}>
+							Log in
+						</Button>
+					</Nav.Link>
+				</Nav>
+			</Navbar>
+			{/* Modal */}
+			<Modal show={show} onHide={handleClose}>
+				<Modal.Header closeButton>
+					<Modal.Title>Modal heading</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>{"Woohoo, you're reading this text in a modal!"}</Modal.Body>
+				<Modal.Footer>
+					<Button variant="secondary" onClick={handleClose}>
+						Close
+					</Button>
+					<Button variant="primary" onClick={handleClose}>
+						Save Changes
+					</Button>
+				</Modal.Footer>
+			</Modal>
+			{/* End Modal */}
+		</>
 	);
 };

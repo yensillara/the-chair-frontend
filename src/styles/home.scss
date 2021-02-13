@@ -1,0 +1,28 @@
+.mb-3 {
+    margin-bottom: 0 !important;
+}
+// .content {
+//     display: flex;
+// }
+// .homeView{
+//     padding: 4px;
+//     margin: 0;
+//     background: black;
+// }
+// .homeView .image{
+//     width: 100%;
+//     top: 4px;
+//     left: 4px;
+//     background: black;
+//     object-fit: cover;
+// }
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    background-image: url(./../img/new-background.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}

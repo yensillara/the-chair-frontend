@@ -1,16 +1,24 @@
 import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
-import professionalUser from "../../img/vista1.jpg";
-import homeUser from "../../img/vista2.jpg";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 export const Home = () => (
 	<>
-		<div className="home-user text-left">
-			<img className="image1" src={homeUser} />
-		</div>
-		<div className="professional-user text-right">
-			<img src={professionalUser} className="image2" />
-		</div>
+		<Container>
+			<Row>
+				<Col className="justify-content-space-between text-center">
+					<Button>
+						<p className="tittle">Join as a User</p>
+					</Button>
+					<p className="description">Find your style and buy it yourself</p>
+				</Col>
+				<Col>
+					<Button>
+						<p className="tittle">Join as a professional</p>
+					</Button>
+					<p className="description">Dedicate to Designers, Architects or Sellers</p>
+				</Col>
+			</Row>
+		</Container>
 	</>
 );
