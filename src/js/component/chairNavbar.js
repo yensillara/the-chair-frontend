@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import brand from "../../img/brand.png";
-import { Nav, Modal, Button } from "react-bootstrap";
+import { Nav, Modal, Navbar, Button } from "react-bootstrap";
 
-export const Navbar = () => {
+export const ChairNavbar = () => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);

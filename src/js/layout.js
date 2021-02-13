@@ -7,7 +7,7 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { ChairNavbar } from "./component/chairNavbar";
 import { Footer } from "./component/footer";
 
 //create your first component
@@ -19,7 +19,7 @@ const Layout = () => {
 	return (
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
-				<Navbar />
+				<ChairNavbar />
 
 				<Home />
 
