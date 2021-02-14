@@ -7,17 +7,19 @@ export const Home = () => {
 	return (
 		<>
 			<Container>
-				<Row>
-					<Col className="text-center">
-						<Button>
-							<p className="tittle">Join as a User</p>
+				<Row className="homeSignup justify-content-md-center">
+					<Col className="buttonSignup">
+						<Button variant="outline-warning">
+							<p className="text">Join as an User</p>
+							<p className="text">Find your style and buy it yourself</p>
 						</Button>
-						<p className="description">Find your style and buy it yourself</p>
 					</Col>
-					<Col>
+					<Col className="buttonSignup">
 						<Link to="/signup">
-							<p className="tittle">Join as a professional</p>
-							<p className="description">Dedicate to Designers, Architects or Sellers</p>
+							<Button variant="outline-warning">
+								<p className="text">Join as a Professional</p>
+								<p className="text">Designers, Architects or Sellers</p>
+							</Button>
 						</Link>
 					</Col>
 				</Row>

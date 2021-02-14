@@ -4,44 +4,55 @@ import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
 const FormSignup = () => {
 	return (
-		<>
+		<React.Fragment>
 			<Container>
 				<Row>
 					<Col>
-						<Card bg="secondary">
+						<Card className="cardSignup" bg="light">
 							<Card.Header as="h5">Sign up</Card.Header>
 							<Card.Body>
-								<Card.Title>Special title treatment</Card.Title>
 								<Card.Text>
 									<Form>
-										<Form.Group controlId="exampleForm.ControlInput1">
+										<Form.Group controlId="Form.ControlInput1">
+											<Form.Label>Full Name</Form.Label>
+											<Form.Control type="fullName" placeholder="full name" />
+										</Form.Group>
+										<Form.Group controlId="Form.ControlInput2">
 											<Form.Label>Email address</Form.Label>
 											<Form.Control type="email" placeholder="name@example.com" />
 										</Form.Group>
-										<Form.Group controlId="exampleForm.ControlSelect1">
+										<Form.Group controlId="Form.ControlSelect1">
 											<Form.Label>Profession</Form.Label>
 											<Form.Control as="select">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
+												<option>Architect</option>
+												<option>Interior Designer</option>
+												<option>Architects Office</option>
+												<option>Interior Design Office</option>
 											</Form.Control>
 										</Form.Group>
+										<Form.Group controlId="Form.ControlInput3">
+											<Form.Label>Phone Number</Form.Label>
+											<Form.Control type="phone" placeholder="314-674-5443" />
+										</Form.Group>
+										<Form.Group controlId="Form.ControlInput4">
+											<Form.Label>Direction</Form.Label>
+											<Form.Control type="direction" placeholder="Caracas, Venezuela" />
+										</Form.Group>
 										<Form.Group controlId="descriptionForm.ControlTexdescription">
-											<Form.Label>Description</Form.Label>
-											<Form.Control as="textdescription" rows={3} />
+											<Form.Label>Style Description</Form.Label>
+											<Form.Control as="textarea" rows={3} />
 										</Form.Group>
 									</Form>
 								</Card.Text>
-								<Button variant="primary">Go somewhere</Button>
+								<Button variant="outline-dark" className="loginButton font-weight-bolder">
+									Submit
+								</Button>
 							</Card.Body>
 						</Card>
 					</Col>
 				</Row>
 			</Container>
-		</>
+		</React.Fragment>
 	);
 };
-
 export default FormSignup;
