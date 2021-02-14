@@ -21,7 +21,7 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ChairNavbar />
 				<Switch>
-					<Route exact path="/home">
+					<Route exact path="/">
 						<Home />
 					</Route>
 					<Route exact path="/signup">

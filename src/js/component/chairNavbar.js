@@ -6,7 +6,7 @@ export const ChairNavbar = () => {
 	return (
 		<>
 			<Navbar expand="lg" className="navbar">
-				<Navbar.Brand href="/home">
+				<Navbar.Brand href="/">
 					<div className="brand" />
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />

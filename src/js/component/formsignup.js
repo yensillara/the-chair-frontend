@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../styles/signup.scss";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
-const FormSignup = () => {
+export const FormSignup = () => {
 	return (
 		<React.Fragment>
 			<Container>
@@ -55,4 +55,3 @@ const FormSignup = () => {
 		</React.Fragment>
 	);
 };
-export default FormSignup;
