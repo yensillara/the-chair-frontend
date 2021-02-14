@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+import { Signup } from "./views/signup";
+import { ViewLogin } from "./views/login";
 import injectContext from "./store/appContext";
 
 import { ChairNavbar } from "./component/chairNavbar";
@@ -20,9 +20,17 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ChairNavbar />
-
-				<Home />
-
+				<Switch>
+					<Route exact path="/home">
+						<Home />
+					</Route>
+					<Route exact path="/signup">
+						<Signup />
+					</Route>
+					<Route exact path="/login">
+						<ViewLogin />
+					</Route>
+				</Switch>
 				<Footer />
 			</BrowserRouter>
 		</div>

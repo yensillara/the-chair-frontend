@@ -1,45 +1,31 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import brand from "../../img/brand.png";
-import { Nav, Modal, Navbar, Button } from "react-bootstrap";
+import { Nav, Navbar, Button } from "react-bootstrap";
 
 export const ChairNavbar = () => {
-	const [show, setShow] = useState(false);
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
-
 	return (
 		<>
-			<Navbar bg="light" variant="light">
-				<Navbar.Brand href="#home">
-					<img src={brand} height="90" className="d-inline-block align-top" alt="The Chair logo" />
+			<Navbar expand="lg" className="navbar">
+				<Navbar.Brand href="/home">
+					<div className="brand" />
 				</Navbar.Brand>
-				<Nav className="mr-auto">
-					<Nav.Link href="#home">About Us</Nav.Link>
-					<Nav.Link href="#features">Contact Us</Nav.Link>
-					<Nav.Link href="#login">
-						<Button variant="primary" onClick={handleShow}>
-							Log in
-						</Button>
-					</Nav.Link>
-				</Nav>
+				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+				<Navbar.Collapse id="responsive-navbar-nav">
+					<Nav className="ml-auto">
+						<Nav.Link href="/AboutUs" className="text-dark">
+							About Us
+						</Nav.Link>
+						<Nav.Link href="/Contact" className="text-dark">
+							Contact
+						</Nav.Link>
+						<Link to="/login">
+							<Button variant="outline-dark" className="loginButton text-white font-weight-bolder">
+								Log in
+							</Button>
+						</Link>
+					</Nav>
+				</Navbar.Collapse>
 			</Navbar>
-			{/* Modal */}
-			<Modal show={show} onHide={handleClose}>
-				<Modal.Header closeButton>
-					<Modal.Title>Modal heading</Modal.Title>
-				</Modal.Header>
-				<Modal.Body>{"Woohoo, you're reading this text in a modal!"}</Modal.Body>
-				<Modal.Footer>
-					<Button variant="secondary" onClick={handleClose}>
-						Close
-					</Button>
-					<Button variant="primary" onClick={handleClose}>
-						Save Changes
-					</Button>
-				</Modal.Footer>
-			</Modal>
-			{/* End Modal */}
 		</>
 	);
 };

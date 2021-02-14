@@ -2,8 +2,35 @@
     General Styles
 */
 .navbar{
-    background-color:rgba(143, 143, 143, 0.432);
+    background-color:rgba(255, 255, 255, 0.432);
+    font-size: large;
+}
+.navbar .brand {
+	display: inline-block;
+	background: url("./../img/brand.png") no-repeat center center;
+	background-size: contain;
+	width: 560px;
+	height: 110px;
+	text-indent: -9999px;
+}
+@media only screen and (max-width: 959px) {
+   .navbar .brand {
+      background-image: url("./../img/brand.png");
+      width: 350px;
+      height: 110px;
+   }
+}
+@media only screen and (max-width: 519px) {
+   .navbar .brand{
+      background-image: url("./../img/brand.png");
+      width: 150px;
+      height: 90px;
+   }
 }
 .footer{
-    background-color:rgba(143, 143, 143, 0.555);
+    background-color:rgba(255, 255, 255, 0.555);
+}
+.loginButton {
+   border-radius: 30px;
+   width: 120px;
 }
