@@ -2,12 +2,13 @@
     General Styles
 */
 .navbar{
-    background-color:rgba(255, 255, 255, 0.432);
+    background-color: rgba(226, 226, 226, 0.836);
     font-size: large;
+    cursor: pointer;
 }
 .navbar .brand {
 	display: inline-block;
-	background: url("./../img/brand.png") no-repeat center center;
+	background: url("./../img/THECHAIR.png") no-repeat center center;
 	background-size: contain;
 	width: 560px;
 	height: 110px;
@@ -15,22 +16,22 @@
 }
 @media only screen and (max-width: 959px) {
    .navbar .brand {
-      background-image: url("./../img/brand.png");
+      background-image: url("./../img/THECHAIR.png");
       width: 350px;
       height: 110px;
    }
 }
 @media only screen and (max-width: 519px) {
    .navbar .brand{
-      background-image: url("./../img/brand.png");
+      background-image: url("./../img/THECHAIR.png");
       width: 150px;
       height: 90px;
    }
 }
 .footer{
-    background-color:rgba(255, 255, 255, 0.555);
+    background-color:rgba(226, 226, 226, 0.836);
 }
-.loginButton {
+.styleButton {
    border-radius: 30px;
    width: 120px;
 }

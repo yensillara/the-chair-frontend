@@ -1,8 +1,8 @@
 body {
     width: 100%;
     height: 100vh;
-    background-color: black;
-    background-image: url(../img/new-background.jpg);
+    background-color: white;
+    background-image: url(../img/background2.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -11,17 +11,36 @@ body {
 .mb-3 {
     margin-bottom: 0 !important;
 }
+
 .homeSignup {
     height: 70vh;
 }
-
+.navbarLogin {
+    margin-left: 10px;
+}
 .buttonSignup {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+.buttonUser {
+    margin-right: 90px;
+    background-color: rgba(255, 230, 0, 0.459);
+}
+.buttonPro {
+    margin-left: 90px;
+    background-color: rgba(255, 218, 185, 0.589);
+}
 .text {
-    font-family: 'Oswald', sans-serif;
-    font-size: 30px;
+    font-family: 'Raleway', sans-serif 600;
+    font-size: 40px;
+    font-weight: 600;
+    color: black;
+}
+.description {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    color: black;
 }

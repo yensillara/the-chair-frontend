@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
 export const Footer = () => (
-	<footer className="footer sticky-bottom mt-auto py-3 text-center">
+	<footer className="footer fixed-bottom mt-auto py-3 text-center">
 		<p>
-			Made with <i className="fa fa-heart text-danger" /> by <a>The Chair©</a>
+			<a>The Chair©2021</a>
 		</p>
 	</footer>
 );
