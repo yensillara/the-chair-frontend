@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import FormSignup from "../component/formsignup.js";
 import "../../styles/home.scss";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
@@ -37,9 +38,6 @@ export const Home = () => {
 				<Modal.Footer>
 					<Button variant="outline-dark" className="styleButton font-weight-bolder" onClick={handleClose}>
 						Close
-					</Button>
-					<Button variant="outline-dark" className="styleButton font-weight-bolder">
-						Register
 					</Button>
 				</Modal.Footer>
 			</Modal>

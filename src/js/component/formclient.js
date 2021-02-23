@@ -1,24 +1,22 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext.js";
-import { Card, Button, Form, ModalFooter } from "react-bootstrap";
+import { Card, Form, Button, ModalFooter } from "react-bootstrap";
 
-export const FormSignup = () => {
+export const FormClient = () => {
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
-	const professionalRegister = {
+	const clientRegister = {
 		full_name: "",
 		email: "",
-		password: "",
 		phone: "",
-		profession: "",
-		location: "",
-		description: ""
+		location: ""
 	};
-	const [signup, setSignup] = useState(professionalRegister);
+
+	const [signup, setSignUp] = useState(clientRegister);
 
 	function changeSignUp(e) {
-		setSignup({
+		setSignUp({
 			...signup,
 			[e.target.name]: e.target.value
 		});
@@ -28,18 +26,18 @@ export const FormSignup = () => {
 	const saveSignUp = async e => {
 		e.preventDefault();
 		console.log(signup);
-		let success = await actions.professionalRegister(signup);
+		let success = await actions.clientRegister(signup);
 		if (success) {
-			console.log("Successful Sign up");
-			history.push("/professionals");
+			console.log("Successful Register");
+			history.push("/clients");
 		} else {
-			console.log("Sign up failed");
+			console.log("Register failed");
 		}
 	};
 
 	return (
 		<React.Fragment>
-			<Card className="cardSignup" border="dark" bg="transparent">
+			<Card className="formclient" border="dark" bg="transparent">
 				<Card.Body>
 					<Card.Text>
 						<Form>
@@ -61,25 +59,6 @@ export const FormSignup = () => {
 									onChange={changeSignUp}
 								/>
 							</Form.Group>
-							<Form.Group controlId="formBasicPassword">
-								<Form.Label>Password</Form.Label>
-								<Form.Control
-									name="password"
-									type="password"
-									placeholder="Password"
-									onChange={changeSignUp}
-								/>
-							</Form.Group>
-							<Form.Group controlId="Form.ControlSelect1">
-								<Form.Label>Profession</Form.Label>
-								<Form.Control name=" profession" as="select" custom onChange={changeSignUp}>
-									<option>Choose One</option>
-									<option>Architect</option>
-									<option>Interior Designer</option>
-									<option>Architects Office</option>
-									<option>Interior Design Office</option>
-								</Form.Control>
-							</Form.Group>
 							<Form.Group controlId="Form.ControlInput3">
 								<Form.Label>Phone Number</Form.Label>
 								<Form.Control
@@ -98,10 +77,6 @@ export const FormSignup = () => {
 									onChange={changeSignUp}
 								/>
 							</Form.Group>
-							<Form.Group controlId="descriptionForm.ControlTexdescription">
-								<Form.Label>Style Description</Form.Label>
-								<Form.Control name="description" as="textarea" rows={3} onChange={changeSignUp} />
-							</Form.Group>
 						</Form>
 					</Card.Text>
 				</Card.Body>
@@ -114,4 +89,5 @@ export const FormSignup = () => {
 		</React.Fragment>
 	);
 };
-export default FormSignup;
+
+export default FormClient;

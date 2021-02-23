@@ -37,14 +37,11 @@ export const ChairNavbar = () => {
 					<Modal.Title>Log in</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<Login />
+					<Login handleClose={handleClose} />
 				</Modal.Body>
 				<Modal.Footer>
 					<Button variant="outline-dark" onClick={handleClose} className="styleButton font-weight-bolder">
 						Close
-					</Button>
-					<Button variant="outline-dark" className="styleButton font-weight-bolder">
-						Submit
 					</Button>
 				</Modal.Footer>
 			</Modal>

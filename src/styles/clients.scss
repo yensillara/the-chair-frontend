@@ -1,0 +1,25 @@
+.cliente-image {
+    width: 200px;
+}
+
+.create {
+    display: flex;
+    width: 300px;
+}
+
+.create-project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    color: black;
+    margin-top: 150px;
+}
+
+.cliente-items {
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: black;
+}

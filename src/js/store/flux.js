@@ -1,42 +1,74 @@
+const BASE_URL = "http://localhost:8080";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			professional: {},
+			clients: [],
+			projects: [],
+			token: ""
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			professionalRegister: async data_signup => {
+				console.log(data_signup);
+				let url = BASE_URL + "/professionals";
+				let response = await fetch(url, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(data_signup)
+				});
+				if (response.ok) {
+					return true;
+				} else {
+					console.log(response.statusText);
+					console.log(response.status);
+					return false;
+				}
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+			professionalLogin: async data_login => {
+				let url = BASE_URL + "/login";
+				let store = getStore();
+				let response = await fetch(url, {
+					method: "POST",
+					body: JSON.stringify(data_login),
+					headers: {
+						"Content-Type": "application/json"
+					}
 				});
 
-				//reset the global store
-				setStore({ demo: demo });
+				let information = await response.json();
+				console.log(information);
+
+				if (response.ok) {
+					setStore({ token: information.jwt });
+					console.log(response.ok);
+					return true;
+				} else {
+					console.log(response.statusText);
+					return false;
+				}
+			},
+
+			clientRegister: async data_signup => {
+				console.log(data_signup);
+				let store = getStore();
+				let url = BASE_URL + "/clients";
+				let response = await fetch(url, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+					body: JSON.stringify(data_signup)
+				});
+				if (response.ok) {
+					return true;
+				} else {
+					console.log(response.statusText);
+					console.log(response.status);
+					return false;
+				}
 			}
 		}
 	};

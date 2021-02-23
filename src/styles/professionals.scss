@@ -1,0 +1,33 @@
+.register {
+    display: flex;
+    width: 300px;
+}
+
+.register-client {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: black;
+    margin-top: 150px;
+}
+
+.usuario-image {
+    width: 200px;
+}
+
+.card-image {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    margin-top: 50px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: black;
+}
+

@@ -10,15 +10,15 @@
 	display: inline-block;
 	background: url("./../img/THECHAIR.png") no-repeat center center;
 	background-size: contain;
-	width: 560px;
-	height: 110px;
+	width: 260px;
+	height: 50px;
 	text-indent: -9999px;
 }
 @media only screen and (max-width: 959px) {
    .navbar .brand {
       background-image: url("./../img/THECHAIR.png");
-      width: 350px;
-      height: 110px;
+      width: 220px;
+      height: 50px;
    }
 }
 @media only screen and (max-width: 519px) {
