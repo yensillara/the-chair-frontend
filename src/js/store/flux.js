@@ -6,8 +6,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			professional: {},
 			clients: [],
 			projects: [],
-			token: ""
+			token: "",
+			logInState: false
 		},
+
 		actions: {
 			professionalRegister: async data_signup => {
 				console.log(data_signup);
@@ -41,7 +43,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(information);
 
 				if (response.ok) {
-					setStore({ token: information.jwt });
+					setStore({ professional: information, token: information.jwt, logInState: true });
+					sessionStorage.setItem("token", information.jwt);
+					sessionStorage.setItem("id", information.id);
 					console.log(response.ok);
 					return true;
 				} else {

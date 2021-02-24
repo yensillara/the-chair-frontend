@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
 import Login from "./../component/login.js";
 import { Nav, Navbar, Button, Modal } from "react-bootstrap";
 
 export const ChairNavbar = () => {
+	const { store, actions } = useContext(Context);
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+	const logOut = () => {
+		sessionStorage.token = "";
+		sessionStorage.logInState = false;
+		store.token = "";
+		store.logInState = false;
+	};
+	useEffect(() => {
+		console.log("useEffect");
+		if (sessionStorage.getItem("logInState")) {
+			store.professional = sessionStorage.getItem("professional");
+			store.logInState = true;
+			store.token = sessionStorage.token;
+		}
+	}, []);
 
 	return (
 		<>
@@ -22,12 +38,21 @@ export const ChairNavbar = () => {
 						<Nav.Link href="/Contact" className="text-dark font-weight-bolder">
 							Contact
 						</Nav.Link>
-						<Button
-							variant="outline-dark"
-							className="styleButton navbarLogin text-white font-weight-bolder"
-							onClick={handleShow}>
-							Log in
-						</Button>
+						{store.logInState ? (
+							<Button
+								variant="outline-dark"
+								className="styleButton navbarLogout text-white font-weight-bolder"
+								onClick={logOut}>
+								Log out
+							</Button>
+						) : (
+							<Button
+								variant="outline-dark"
+								className="styleButton navbarLogin text-white font-weight-bolder"
+								onClick={handleShow}>
+								Log in
+							</Button>
+						)}
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
