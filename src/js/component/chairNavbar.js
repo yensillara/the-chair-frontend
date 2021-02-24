@@ -32,12 +32,6 @@ export const ChairNavbar = () => {
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav">
 					<Nav className="ml-auto">
-						<Nav.Link href="/AboutUs" className="text-dark font-weight-bolder">
-							About Us
-						</Nav.Link>
-						<Nav.Link href="/Contact" className="text-dark font-weight-bolder">
-							Contact
-						</Nav.Link>
 						{store.logInState ? (
 							<Button
 								variant="outline-dark"
