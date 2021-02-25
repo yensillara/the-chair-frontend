@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import FormSignup from "../component/formsignup.js";
 import "../../styles/home.scss";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import { Context } from "../store/appContext.js";
 
 export const Home = () => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-
+	const { store, actions } = useContext(Context);
+	useEffect(() => {
+		actions.switchBody("home-body");
+	}, []);
 	return (
 		<>
 			<Container>

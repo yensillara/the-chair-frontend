@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:8080";
+// const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://8080-plum-toucan-we4n0yd5.ws-us03.gitpod.io";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -7,10 +8,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 			clients: [],
 			projects: [],
 			token: "",
-			logInState: false
+			logInState: false,
+			checked: false
 		},
 
 		actions: {
+			switchBody: className => {
+				let body = document.body;
+				body.className = className;
+				// body.classList.add(className);
+			},
+			checkStorage: () => {
+				let token = sessionStorage.getItem("token");
+				if (token != "") {
+					console.log(token);
+					setStore({
+						checked: true,
+						token: sessionStorage.getItem("token"),
+						professional: JSON.parse(sessionStorage.getItem("professional"))
+					});
+				} else {
+					setStore({ checked: true });
+				}
+			},
+			logout: async () => {
+				sessionStorage.setItem("token", "");
+				sessionStorage.setItem("professional", "");
+				setStore({
+					token: "",
+					professional: {}
+				});
+			},
 			professionalRegister: async data_signup => {
 				console.log(data_signup);
 				let url = BASE_URL + "/professionals";
@@ -20,6 +48,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify(data_signup)
 				});
 				if (response.ok) {
+					let body = await response.json();
+					setStore({
+						token: body["jwt"],
+						professional: body["professional"]
+					});
+					sessionStorage.setItem("token", body.jwt);
+					sessionStorage.setItem("professional", JSON.stringify(body.professional));
 					return true;
 				} else {
 					console.log(response.statusText);
@@ -39,13 +74,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 
-				let information = await response.json();
-				console.log(information);
-
 				if (response.ok) {
-					setStore({ professional: information, token: information.jwt, logInState: true });
+					let information = await response.json();
+					console.log(information);
+					setStore({ professional: information.professional, token: information.jwt, logInState: true });
 					sessionStorage.setItem("token", information.jwt);
-					sessionStorage.setItem("id", information.id);
+					sessionStorage.setItem("professional", JSON.stringify(information.professional));
 					console.log(response.ok);
 					return true;
 				} else {

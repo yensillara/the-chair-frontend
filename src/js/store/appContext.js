@@ -20,8 +20,8 @@ const injectContext = PassedComponent => {
 					})
 			})
 		);
-
 		useEffect(() => {
+			state.actions.checkStorage();
 			/**
 			 * state.action.furniture(),
 			 * aqui las funciones que llaman el backend para pedir opciones fijas la plataforma
@@ -41,9 +41,7 @@ const injectContext = PassedComponent => {
 		// the context will now have a getStore, getActions and setStore functions available, because they were declared
 		// on the state of this component
 		return (
-			<Context.Provider value={state}>
-				<PassedComponent {...props} />
-			</Context.Provider>
+			<Context.Provider value={state}>{state.store.checked && <PassedComponent {...props} />}</Context.Provider>
 		);
 	};
 	return StoreWrapper;

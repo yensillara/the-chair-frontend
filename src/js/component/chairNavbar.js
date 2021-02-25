@@ -8,20 +8,15 @@ export const ChairNavbar = () => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-	const logOut = () => {
-		sessionStorage.token = "";
-		sessionStorage.logInState = false;
-		store.token = "";
-		store.logInState = false;
-	};
-	useEffect(() => {
-		console.log("useEffect");
-		if (sessionStorage.getItem("logInState")) {
-			store.professional = sessionStorage.getItem("professional");
-			store.logInState = true;
-			store.token = sessionStorage.token;
-		}
-	}, []);
+
+	// useEffect(() => {
+	// 	console.log("useEffect");
+	// 	if (sessionStorage.getItem("logInState")) {
+	// 		store.professional = sessionStorage.getItem("professional");
+	// 		store.logInState = true;
+	// 		store.token = sessionStorage.token;
+	// 	}
+	// }, []);
 
 	return (
 		<>
@@ -32,11 +27,11 @@ export const ChairNavbar = () => {
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav">
 					<Nav className="ml-auto">
-						{store.logInState ? (
+						{store.token != "" ? (
 							<Button
 								variant="outline-dark"
 								className="styleButton navbarLogout text-white font-weight-bolder"
-								onClick={logOut}>
+								onClick={actions.logout}>
 								Log out
 							</Button>
 						) : (
