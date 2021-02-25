@@ -34,7 +34,7 @@ export const Professionals = () => {
 								<Image className="usuario-image" src={usuarioImage} roundedCircle />
 								<Card>
 									<Card className="card-professional" style={{ width: "25rem" }}>
-										<Card.Title>Professional</Card.Title>
+										<Card.Title>{store.professional && store.professional.full_name}</Card.Title>
 										<Card.Body>
 											<Card.Text>{store.professional && store.professional.descrition}</Card.Text>
 										</Card.Body>

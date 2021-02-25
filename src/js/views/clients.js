@@ -3,6 +3,7 @@ import "../../styles/clients.scss";
 import { Row, Col, Image, Button, Container, ListGroup } from "react-bootstrap";
 import { Context } from "../store/appContext.js";
 import clienteImage from "../../img/cliente.jpg";
+import proBackground from "../../img/vista_profesional.jpg";
 
 export const Clients = () => {
 	const [state, setState] = useState({});
@@ -17,6 +18,10 @@ export const Clients = () => {
 	const handleCloseProjectList = () => setShowProjectList(false);
 	const handleShowProjectList = () => setShowProjectList(true);
 
+	useEffect(() => {
+		actions.switchBody("pro-body");
+	}, []);
+
 	return (
 		<>
 			<Container>
@@ -24,10 +29,10 @@ export const Clients = () => {
 					<Col className="card-image" xs={8}>
 						<Image className="cliente-image" src={clienteImage} roundedCircle />
 						<ListGroup className="cliente-items" style={{ width: "30rem" }}>
-							<ListGroup.Item>Client Full Name</ListGroup.Item>
-							<ListGroup.Item>Email</ListGroup.Item>
-							<ListGroup.Item>Phone</ListGroup.Item>
-							<ListGroup.Item>Location</ListGroup.Item>
+							<ListGroup.Item>{store.client && store.client.full_name}</ListGroup.Item>
+							<ListGroup.Item>{store.client && store.client.email}</ListGroup.Item>
+							<ListGroup.Item>{store.client && store.client.phone}</ListGroup.Item>
+							<ListGroup.Item>{store.client && store.client.location}</ListGroup.Item>
 						</ListGroup>
 					</Col>
 					<Col className="create-project" xs={4}>

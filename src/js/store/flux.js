@@ -1,11 +1,10 @@
-// const BASE_URL = "http://localhost:8080";
-const BASE_URL = "https://8080-plum-toucan-we4n0yd5.ws-us03.gitpod.io";
+const BASE_URL = "http://localhost:8080";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			professional: {},
-			clients: [],
+			clients: {},
 			projects: [],
 			token: "",
 			logInState: false,
