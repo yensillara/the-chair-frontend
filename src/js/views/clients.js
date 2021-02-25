@@ -4,6 +4,7 @@ import { Row, Col, Image, Button, Container, ListGroup } from "react-bootstrap";
 import { Context } from "../store/appContext.js";
 import clienteImage from "../../img/cliente.jpg";
 import proBackground from "../../img/vista_profesional.jpg";
+import { Project } from "../component/project";
 
 export const Clients = () => {
 	const [state, setState] = useState({});
@@ -25,7 +26,7 @@ export const Clients = () => {
 	return (
 		<>
 			<Container>
-				<Row className="justify-content-center">
+				<Row className="justify-content-center mb-5">
 					<Col className="card-image" xs={8}>
 						<Image className="cliente-image" src={clienteImage} roundedCircle />
 						<ListGroup className="cliente-items" style={{ width: "30rem" }}>
@@ -36,6 +37,11 @@ export const Clients = () => {
 						</ListGroup>
 					</Col>
 					<Col className="create-project" xs={4}>
+						<Link>
+							<Button className="back" variant="light">
+								Back to Professional Profile
+							</Button>
+						</Link>
 						<Button className="create" variant="light" onClick={handleShowCreate}>
 							Create Project
 						</Button>
@@ -45,6 +51,8 @@ export const Clients = () => {
 					</Col>
 				</Row>
 			</Container>
+			{/* project view */}
+			<Project />
 		</>
 	);
 };

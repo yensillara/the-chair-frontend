@@ -41,19 +41,22 @@ const Login = ({ handleClose }) => {
 					<Card.Text>
 						<Form>
 							<Form.Group controlId="formBasicEmail">
-								<Form.Label>Email address</Form.Label>
+								<Form.Label>
+									<i className="fas fa-user" />
+									Email address
+								</Form.Label>
 								<Form.Control
 									name="email"
 									type="email"
 									placeholder="Enter email"
 									onChange={changeLogIn}
 								/>
-								<Form.Text className="text-muted">
-									{"We'll never share your email with anyone else."}
-								</Form.Text>
 							</Form.Group>
 							<Form.Group controlId="formBasicPassword">
-								<Form.Label>Password</Form.Label>
+								<Form.Label>
+									<i className="fas fa-lock" />
+									Password
+								</Form.Label>
 								<Form.Control
 									name="password"
 									type="password"
@@ -65,9 +68,13 @@ const Login = ({ handleClose }) => {
 					</Card.Text>
 				</Card.Body>
 			</Card>
-			<ModalFooter>
-				<Button variant="outline-dark" className="styleButton font-weight-bolder" onClick={saveLogIn}>
-					Submit
+			<ModalFooter className="modalFooter">
+				<Button
+					variant="outline-dark"
+					id="login"
+					className="styleButton font-weight-bolder"
+					onClick={saveLogIn}>
+					Log in
 				</Button>
 			</ModalFooter>
 		</>
