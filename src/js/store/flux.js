@@ -1,4 +1,4 @@
-const BASE_URL = "https://8080-blue-cod-k9o50adf.ws-us03.gitpod.io/";
+const BASE_URL = "http://localhost:8080";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {

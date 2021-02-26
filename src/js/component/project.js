@@ -31,6 +31,7 @@ export const Project = () => {
 							<Card.Header as="h5">Tipology</Card.Header>
 							<Card.Body>
 								<Form.Control as="select">
+									<option>Choose one</option>
 									<option>Residential</option>
 									<option>Office</option>
 									<option>Comercial</option>
@@ -43,6 +44,7 @@ export const Project = () => {
 							<Card.Header as="h5">Workspace</Card.Header>
 							<Card.Body>
 								<Form.Control as="select">
+									<option>Choose one</option>
 									<option>Living room</option>
 									<option>Family room</option>
 									<option>Kitchen</option>
