@@ -8,9 +8,11 @@ import clienteImage from "../../img/cliente.jpg";
 export const Project = () => {
 	const { store, actions } = useContext(Context);
 
-	useEffect(() => {
-		actions.getprojectoptions();
-	}, []);
+	const [saveDesignStyle, setSaveDesignStyle] = useState(false);
+
+	// useEffect(() => {
+	// 	actions.retorno();
+	// });
 
 	return (
 		<>
@@ -58,9 +60,10 @@ export const Project = () => {
 				</Row>
 				<Card.Header as="h5" className="headers bg-white">
 					Design Style
-					{store.designstyle.map(designstyle => (
-						<stylesCard designstyle={designstyle} key={desingstyle.id} image={URL} />
-					))}
+					{store.desingstyle &&
+						store.designstyle.map(designstyle => (
+							<stylesCard designstyle={designstyle} key={desingstyle.id} image={URL} />
+						))}
 				</Card.Header>
 
 				<Card.Header as="h5" className="headers bg-white">

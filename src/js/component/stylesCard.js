@@ -3,7 +3,7 @@ import { Card, Form, Image, Container, CardDeck } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
-export const stylesCard = ({ designstyle }) => {
+export const stylesCard = ({ designStyle, saveDesignStyle, setSaveDesignStyle }) => {
 	const history = useHistory();
 
 	return (
@@ -14,7 +14,7 @@ export const stylesCard = ({ designstyle }) => {
 						<Card.Img variant="top" src={designstyle.image_url} />
 						<Card.Body>
 							<Card.Title>{designstyle.name}</Card.Title>
-							<Form.Check type="checkbox" />
+							<Form.Check type="checkbox" onClick={e => setSaveDesignStyle(designStyle.id)} />
 						</Card.Body>
 					</Card>
 					<Card>
