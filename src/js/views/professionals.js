@@ -20,8 +20,10 @@ export const Professionals = () => {
 
 	const handleCloseList = () => setShowList(false);
 	const handleShowList = () => setShowList(true);
+
 	useEffect(() => {
 		actions.switchBody("pro-body");
+		actions.getClients();
 	}, []);
 
 	return (
@@ -71,7 +73,9 @@ export const Professionals = () => {
 
 					<Modal size="lg" show={showList} backdrop="static" keyboard={false}>
 						<Modal.Body>
-							<FormClientList />
+							{store.clients.map(client => (
+								<FormClientList client={client} key={client.id} />
+							))}
 						</Modal.Body>
 						<Modal.Footer>
 							<Button

@@ -22,6 +22,8 @@ const injectContext = PassedComponent => {
 		);
 		useEffect(() => {
 			state.actions.checkStorage();
+			state.actions.getProjectOptions();
+
 			/**
 			 * state.action.furniture(),
 			 * aqui las funciones que llaman el backend para pedir opciones fijas la plataforma

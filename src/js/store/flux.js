@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			professional: {},
-			clients: {},
+			clients: [],
 			projects: [],
 			token: "",
 			logInState: false,
@@ -15,7 +15,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			switchBody: className => {
 				let body = document.body;
 				body.className = className;
-				// body.classList.add(className);
 			},
 			checkStorage: () => {
 				let token = sessionStorage.getItem("token");
@@ -105,6 +104,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(response.statusText);
 					console.log(response.status);
 					return false;
+				}
+			},
+
+			getClients: async () => {
+				const store = getStore();
+				let url = BASE_URL + "/clients";
+				let response = await fetch(url, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					}
+				});
+				if (response.ok) {
+					let body = await response.json();
+					setStore({
+						clients: body
+					});
+				}
+			},
+
+			getProjectOptions: async () => {
+				const store = getStore();
+				let url = BASE_URL + "/project-options";
+				let response = await fetch(url, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					}
+				});
+				if (response.ok) {
+					let body = await response.json();
+					setStore({
+						projectOptions: body
+					});
 				}
 			}
 		}

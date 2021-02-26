@@ -5,6 +5,7 @@ import { Context } from "../store/appContext.js";
 import clienteImage from "../../img/cliente.jpg";
 import proBackground from "../../img/vista_profesional.jpg";
 import { Project } from "../component/project";
+import { useHistory, useParams } from "react-router-dom";
 
 export const Clients = () => {
 	const [state, setState] = useState({});
@@ -19,9 +20,24 @@ export const Clients = () => {
 	const handleCloseProjectList = () => setShowProjectList(false);
 	const handleShowProjectList = () => setShowProjectList(true);
 
+	const [client, setClient] = useState(null);
+
+	const history = useHistory();
+
+	const params = useParams();
+
 	useEffect(() => {
 		actions.switchBody("pro-body");
 	}, []);
+
+	useEffect(() => {
+		for (let storeClient of store.clients) {
+			if (params.clientId == storeClient.id) {
+				setClient(storeClient);
+				break;
+			}
+		}
+	}, [params, store.clients]);
 
 	return (
 		<>
@@ -30,18 +46,16 @@ export const Clients = () => {
 					<Col className="card-image" xs={8}>
 						<Image className="cliente-image" src={clienteImage} roundedCircle />
 						<ListGroup className="cliente-items" style={{ width: "30rem" }}>
-							<ListGroup.Item>{store.client && store.client.full_name}</ListGroup.Item>
-							<ListGroup.Item>{store.client && store.client.email}</ListGroup.Item>
-							<ListGroup.Item>{store.client && store.client.phone}</ListGroup.Item>
-							<ListGroup.Item>{store.client && store.client.location}</ListGroup.Item>
+							<ListGroup.Item>{client && client.full_name}</ListGroup.Item>
+							<ListGroup.Item>{client && client.email}</ListGroup.Item>
+							<ListGroup.Item>{client && client.phone}</ListGroup.Item>
+							<ListGroup.Item>{client && client.location}</ListGroup.Item>
 						</ListGroup>
 					</Col>
 					<Col className="create-project" xs={4}>
-						<Link>
-							<Button className="back" variant="light">
-								Back to Professional Profile
-							</Button>
-						</Link>
+						<Button className="back" variant="light" onClick={e => history.goBack()}>
+							Back to Professional Profile
+						</Button>
 						<Button className="create" variant="light" onClick={handleShowCreate}>
 							Create Project
 						</Button>
