@@ -1,10 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
 import "../../styles/project.scss";
 import { Row, Col, Card, Form, Image, Button, Container, ListGroup, CardDeck } from "react-bootstrap";
+import stylesCard from "../component/stylesCard.js";
 import { Context } from "../store/appContext.js";
 import clienteImage from "../../img/cliente.jpg";
 
 export const Project = () => {
+	const { store, actions } = useContext(Context);
+
+	useEffect(() => {
+		actions.getprojectoptions();
+	}, []);
+
 	return (
 		<>
 			<Container fluid>
@@ -51,23 +58,10 @@ export const Project = () => {
 				</Row>
 				<Card.Header as="h5" className="headers bg-white">
 					Design Style
+					{store.designstyle.map(designstyle => (
+						<stylesCard designstyle={designstyle} key={desingstyle.id} image={URL} />
+					))}
 				</Card.Header>
-				<CardDeck>
-					<Card>
-						<Card.Img variant="top" src={clienteImage} />
-						<Card.Body>
-							<Card.Title>Card title</Card.Title>
-							<Form.Check type="checkbox" />
-						</Card.Body>
-					</Card>
-					<Card>
-						<Card.Img variant="top" src={clienteImage} />
-						<Card.Body>
-							<Card.Title>Card title</Card.Title>
-							<Form.Check type="checkbox" />
-						</Card.Body>
-					</Card>
-				</CardDeck>
 
 				<Card.Header as="h5" className="headers bg-white">
 					Furniture Style

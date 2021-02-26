@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import "../../styles/professionals.scss";
-import { Row, Card, Col, Image, Button, Container, Modal, Link } from "react-bootstrap";
+import { Row, Card, Col, Image, Button, Container, Modal } from "react-bootstrap";
 import FormClient from "../component/formclient.js";
 import FormClientList from "../component/formclientlist.js";
 import { Context } from "../store/appContext.js";
