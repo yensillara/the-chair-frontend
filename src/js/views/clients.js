@@ -30,17 +30,14 @@ export const Clients = () => {
 		actions.switchBody("pro-body");
 	}, []);
 
-	useEffect(
-		() => {
-			for (let storeClient of store.clients) {
-				if (params.clientId == storeClient.id) {
-					setClient(storeClient);
-					break;
-				}
+	useEffect(() => {
+		for (let storeClient of store.clients) {
+			if (params.clientId == storeClient.id) {
+				setClient(storeClient);
+				break;
 			}
-		},
-		[params, store.clients]
-	);
+		}
+	}, [params, store.clients]);
 
 	return (
 		<>
