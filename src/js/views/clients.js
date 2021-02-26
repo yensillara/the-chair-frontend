@@ -11,7 +11,7 @@ export const Clients = () => {
 	const [state, setState] = useState({});
 	const { store, actions } = useContext(Context);
 
-	const [showCreate, setShowCreate] = useState(false);
+	const [showCreate, setShowCreate] = useState(true);
 	const [showProjectList, setShowProjectList] = useState(false);
 
 	const handleCloseCreate = () => setShowCreate(false);
@@ -30,14 +30,17 @@ export const Clients = () => {
 		actions.switchBody("pro-body");
 	}, []);
 
-	useEffect(() => {
-		for (let storeClient of store.clients) {
-			if (params.clientId == storeClient.id) {
-				setClient(storeClient);
-				break;
+	useEffect(
+		() => {
+			for (let storeClient of store.clients) {
+				if (params.clientId == storeClient.id) {
+					setClient(storeClient);
+					break;
+				}
 			}
-		}
-	}, [params, store.clients]);
+		},
+		[params, store.clients]
+	);
 
 	return (
 		<>
@@ -56,7 +59,7 @@ export const Clients = () => {
 						<Button className="back" variant="light" onClick={e => history.goBack()}>
 							Back to Professional Profile
 						</Button>
-						<Button className="create" variant="light" onClick={handleShowCreate}>
+						<Button className="create" variant="light" onClick={() => setShowCreate(!showCreate)}>
 							Create Project
 						</Button>
 						<Button className="create" variant="light" onClick={handleShowProjectList}>
@@ -66,7 +69,7 @@ export const Clients = () => {
 				</Row>
 			</Container>
 			{/* project view */}
-			<Project />
+			{!showCreate ? <Project /> : null}
 		</>
 	);
 };

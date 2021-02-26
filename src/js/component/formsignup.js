@@ -106,8 +106,12 @@ export const FormSignup = () => {
 					</Card.Text>
 				</Card.Body>
 			</Card>
-			<ModalFooter>
-				<Button variant="outline-dark" className="styleButton font-weight-bolder" onClick={saveSignUp}>
+			<ModalFooter className="footerRegister">
+				<Button
+					variant="outline-dark"
+					id="registerPro"
+					className="styleButton font-weight-bolder"
+					onClick={saveSignUp}>
 					Register
 				</Button>
 			</ModalFooter>
