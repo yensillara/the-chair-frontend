@@ -8,7 +8,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			projects: [],
 			token: "",
 			logInState: false,
-			checked: false
+			checked: false,
+			designStyle: ""
 		},
 
 		actions: {
@@ -142,6 +143,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 				}
 			}
+
+			// retorno: () => {
+			// 	let store = getStore();
+			// 	let x = store.projectOptions;
+			// 	let y = x.designStyles;
+			// 	console.log("desde el flux" + y);
+			// }
 		}
 	};
 };

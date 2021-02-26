@@ -3,34 +3,27 @@ import { Card, Form, Image, Container, CardDeck } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
-export const stylesCard = ({ designstyle }) => {
+export const StylesCard = ({ designStyle, saveDesignStyle, setSaveDesignStyle }) => {
 	const history = useHistory();
 
 	return (
 		<>
-			<Container>
-				<CardDeck>
-					<Card>
-						<Card.Img variant="top" src={designstyle.image_url} />
-						<Card.Body>
-							<Card.Title>{designstyle.name}</Card.Title>
-							<Form.Check type="checkbox" />
-						</Card.Body>
-					</Card>
-					<Card>
-						<Card.Img variant="top" src={designstyle.image_url} />
-						<Card.Body>
-							<Card.Title>{designstyle.name}</Card.Title>
-							<Form.Check type="checkbox" />
-						</Card.Body>
-					</Card>
-				</CardDeck>
-			</Container>
+			<Card>
+				<Card.Img variant="top" src={designStyle.image_url} />
+				<Card.Body>
+					<Card.Title>{designStyle.design_style_name}</Card.Title>
+					<Form.Check
+						type="checkbox"
+						onClick={e => setSaveDesignStyle(designStyle.id)}
+						checked={designStyle.id == saveDesignStyle}
+					/>
+				</Card.Body>
+			</Card>
 		</>
 	);
 };
-
-export default stylesCard;
-stylesCard.propTypes = {
-	stylesCard: PropTypes.object
+StylesCard.propTypes = {
+	designStyle: PropTypes.object,
+	saveDesignStyle: PropTypes.object,
+	setSaveDesignStyle: PropTypes.func
 };

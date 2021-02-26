@@ -1,16 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 import "../../styles/project.scss";
 import { Row, Col, Card, Form, Image, Button, Container, ListGroup, CardDeck } from "react-bootstrap";
-import stylesCard from "../component/stylesCard.js";
+import { StylesCard } from "../component/stylesCard.js";
 import { Context } from "../store/appContext.js";
 import clienteImage from "../../img/cliente.jpg";
 
 export const Project = () => {
 	const { store, actions } = useContext(Context);
 
-	useEffect(() => {
-		actions.getprojectoptions();
-	}, []);
+	const [saveDesignStyle, setSaveDesignStyle] = useState(null);
+
+	// useEffect(() => {
+	// 	actions.retorno();
+	// });
 
 	return (
 		<>
@@ -58,9 +60,16 @@ export const Project = () => {
 				</Row>
 				<Card.Header as="h5" className="headers bg-white">
 					Design Style
-					{store.designstyle.map(designstyle => (
-						<stylesCard designstyle={designstyle} key={desingstyle.id} image={URL} />
-					))}
+					{store.projectOptions &&
+						store.projectOptions.designStyles &&
+						store.projectOptions.designStyles.map(designStyle => (
+							<StylesCard
+								designStyle={designStyle}
+								key={designStyle.id}
+								saveDesignStyle={saveDesignStyle}
+								setSaveDesignStyle={setSaveDesignStyle}
+							/>
+						))}
 				</Card.Header>
 
 				<Card.Header as="h5" className="headers bg-white">
